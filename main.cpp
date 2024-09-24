@@ -1,14 +1,46 @@
 #include <iostream>
-#define CONSTANT 10
-int add(int a, int b);
+#include <string>
+#include <limits>
+#include <cmath>
+
 int main() {
-    std::cout << "Hello World"<< std::endl;
-    int speed = 0;
-    std::cout << "Enter Number" << std::endl;
-    std::cin  >> speed;
-    std::cout << "speed: "<< speed << add(speed, CONSTANT) << std::endl;
+    // Задание 1: Приветствие пользователя
+    std::string user;
+    std::cout << "Введите ваше имя: "; // Запрашиваем имя пользователя
+    std::cin >> user; // Читаем имя из ввода
+    std::cout << "Привет, " << user << "!" << std::endl; // Выводим приветствие
+
+    // Задание 2: Вывод минимальных и максимальных значений числовых типов данных
+    std::cout << "\nМинимальные и максимальные значения числовых типов данных:" << std::endl;
+
+    std::cout << "int:" << std::endl;
+    std::cout << "Минимальное значение: " << std::numeric_limits<int>::min() << std::endl; // Минимальное значение int
+    std::cout << "Максимальное значение: " << std::numeric_limits<int>::max() << std::endl; // Максимальное значение int
+
+    std::cout << "float:" << std::endl;
+    std::cout << "Минимальное значение: " << std::numeric_limits<float>::min() << std::endl; // Минимальное значение float
+    std::cout << "Максимальное значение: " << std::numeric_limits<float>::max() << std::endl; // Максимальное значение float
+
+    std::cout << "double:" << std::endl;
+    std::cout << "Минимальное значение: " << std::numeric_limits<double>::min() << std::endl; // Минимальное значение double
+    std::cout << "Максимальное значение: " << std::numeric_limits<double>::max() << std::endl; // Максимальное значение double
+
+    // Объяснение пределов значений
+    // Минимальное значение int - это -2147483648, а максимальное - 2147483647,
+    // так как тип int обычно занимает 4 байта в памяти (2^31 значений с учетом знака).
+    // Минимальные значения float и double показывают наименьший положительный нормализованный
+    // номер, которые они могут представлять. Максимальные значения определяются
+    // количеством бит, отводимым под мантиссу и порядок.
+
+    // Задание 3: Вычисление объема икосаэдра
+    double a; // Длина ребра икосаэдра
+    std::cout << "\nВведите длину ребра икосаэдра: ";
+    std::cin >> a; // Считываем длину ребра
+
+    // Вычисляем объем икосаэдра
+    double volume = (5.0 / 12.0) * (3.0 + sqrt(5.0)) * pow(a, 3);
+    
+    std::cout << "Объем икосаэдра с длиной ребра " << a << " равен " << volume << std::endl;
+
     return 0;
-}
-int add(int a, int b) {
-    return a + b;
 }
