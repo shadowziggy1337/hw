@@ -12,4 +12,4 @@ public:
     std::string getType() const;
 };
 
-#endif // ENGINE_HPP
+#endif

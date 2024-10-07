@@ -1,22 +1,17 @@
 #include <iostream>
-#include "User.hpp"
+#include <locale>
+#include "Keyboard.hpp"
 
 int main() {
-    Person person1; // Создание объекта person1 с использованием конструктора по умолчанию
-    std::cout << "Человек 1:" << std::endl;
-    std::cout << "Имя: " << person1.getName() << std::endl;
-    std::cout << "Возраст: " << person1.getAge() << std::endl;
+    setlocale(LC_ALL, "RU");
 
-    Person person2("Анна", 25); // Создание объекта person2
-    std::cout << "\nЧеловек 2:" << std::endl;
-    std::cout << "Имя: " << person2.getName() << std::endl;
-    std::cout << "Возраст: " << person2.getAge() << std::endl;
+    Keyboard mechanical;
+    mechanical.set_data(50.0, "Mechanical keyboard");
+    mechanical.get_info();
 
-    person1.setName("Петр");
-    person1.setAge(30);
-    std::cout << "\nОбновленные данные для Человека 1:" << std::endl;
-    std::cout << "Имя: " << person1.getName() << std::endl;
-    std::cout << "Возраст: " << person1.getAge() << std::endl;
+    Keyboard membrane;
+    membrane.set_data(5.0, "Membrane keyboard");
+    membrane.get_info();
 
     return 0;
 }

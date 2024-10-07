@@ -1,6 +1,3 @@
-#ifndef BANKACCOUNT_HPP
-#define BANKACCOUNT_HPP
-
 #include <string>
 
 class BankAccount {
@@ -15,5 +12,3 @@ public:
     void снять(double сумма);
     double получитьБаланс() const;
 };
-
-#endif // BANKACCOUNT_HPP

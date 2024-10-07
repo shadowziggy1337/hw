@@ -2,6 +2,8 @@ SHELL=/bin/bash
 INC=-Iinclude
 CC=g++
 
+.PHONY: all clean prepare build
+
 all: clean prepare build
 	@echo "Building application...done"
 	echo $(SHELL)
@@ -15,6 +17,6 @@ prepare:
 	mkdir -p obj
 
 build:
-	$(CC) -Wall -g -O0 -c $(INC) -o obj/User.o src/User.cpp
+	$(CC) -Wall -g -O0 -c $(INC) -o obj/Keyboard.o src/Keyboard.cpp
 	$(CC) -Wall -g -O0 -c $(INC) -o obj/main.o src/main.cpp
-	$(CC) -g -O0 -o bin/main.p obj/User.o obj/main.o
+	$(CC) -g -O0 -o bin/main.p obj/Keyboard.o obj/main.o

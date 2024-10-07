@@ -14,7 +14,7 @@ int main() {
     birthDate2.tm_mon = 4;
     birthDate2.tm_mday = 3;
 
-    Student student2("Семенов Алексей", birthDate2, "Группа 19ОД2д", 1282, 5.0f);
+    Student student2("Семенов Алексей", birthDate2, "Группа 19ОД2д", 1282, 3.0f);
 
     std::cout << "Студент 1:\n";
     std::cout << student1.toString() << std::endl;

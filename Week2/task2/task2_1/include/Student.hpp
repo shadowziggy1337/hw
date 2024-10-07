@@ -1,6 +1,3 @@
-#ifndef STUDENT_HPP
-#define STUDENT_HPP
-
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -33,5 +30,3 @@ public:
     std::string toString();
     bool isExcellentStudent();
 };
-
-#endif

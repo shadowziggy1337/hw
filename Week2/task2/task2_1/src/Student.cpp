@@ -1,8 +1,4 @@
 #include "Student.hpp"
-#include <sstream>
-#include <chrono>
-
-#include "Student.hpp"
 
 Student::Student(std::string name, std::tm birthDate, std::string group, int studentId, float averageScore)
     : name(std::move(name)), birthDate(birthDate), group(std::move(group)), studentId(studentId), averageScore(averageScore) {}
@@ -40,5 +36,5 @@ std::string Student::toString() {
 }
 
 bool Student::isExcellentStudent() {
-    return averageScore = 5.0f;
+    return averageScore = 4.8f;
 }

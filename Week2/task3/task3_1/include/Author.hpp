@@ -1,6 +1,3 @@
-#ifndef AUTHOR_HPP
-#define AUTHOR_HPP
-
 #include <string>
 
 class Author {
@@ -16,5 +13,3 @@ public:
     void setName(const std::string& name);
     void setBirthYear(int birthYear);
 };
-
-#endif

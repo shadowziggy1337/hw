@@ -15,7 +15,7 @@ prepare:
 build:
 	$(CC) -Wall -g -O0 -c $(INC) -o obj/Student.o src/Student.cpp
 	$(CC) -Wall -g -O0 -c $(INC) -o obj/main.o src/main.cpp
-	$(CC) -g -O0 -o bin/main obj/Student.o obj/main.o
+	$(CC) -g -O0 -o bin/main.p obj/Student.o obj/main.o
 
 run: all
 	./bin/main

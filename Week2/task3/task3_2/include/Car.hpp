@@ -19,4 +19,4 @@ public:
     void displayInfo() const;
 };
 
-#endif // CAR_HPP
+#endif

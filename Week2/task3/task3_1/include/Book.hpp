@@ -1,6 +1,3 @@
-#ifndef BOOK_HPP
-#define BOOK_HPP
-
 #include "Author.hpp"
 #include <string>
 
@@ -18,4 +15,3 @@ public:
     void setTitle(const std::string& title);
 };
 
-#endif
