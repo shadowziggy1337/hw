@@ -2,46 +2,46 @@
 #include "BankAccount.hpp"
 
 int main() {
-    BankAccount счет("123456789");
-    int выбор;
+    BankAccount account("123456789");
+    int choice;
 
     do {
-        std::cout << "\n---------- Меню ----------" << std::endl;
-        std::cout << "1. Положить деньги" << std::endl;
-        std::cout << "2. Снять деньги" << std::endl;
-        std::cout << "3. Посмотреть баланс" << std::endl;
-        std::cout << "0. Выход" << std::endl;
+        std::cout << "\n---------- Menu ----------" << std::endl;
+        std::cout << "1. Deposit money" << std::endl;
+        std::cout << "2. Withdraw money" << std::endl;
+        std::cout << "3. View balance" << std::endl;
+        std::cout << "0. Exit" << std::endl;
         std::cout << "---------------------------" << std::endl;
-        std::cout << "Введите ваш выбор: ";
-        std::cin >> выбор;
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
 
-        switch (выбор) {
+        switch (choice) {
             case 1: {
-                double сумма;
-                std::cout << "Введите сумму для пополнения: ";
-                std::cin >> сумма;
-                счет.положить(сумма);
-                std::cout << "На счет добавлено: " << сумма << " руб." << std::endl;
+                double amount;
+                std::cout << "Enter the amount to deposit: ";
+                std::cin >> amount;
+                account.deposit(amount);
+                std::cout << "Amount added to account: " << amount << " rub." << std::endl;
                 break;
             }
             case 2: {
-                double сумма;
-                std::cout << "Введите сумму для снятия: ";
-                std::cin >> сумма;
-                счет.снять(сумма);
+                double amount;
+                std::cout << "Enter the amount to withdraw: ";
+                std::cin >> amount;
+                account.withdraw(amount);
                 break;
             }
             case 3: {
-                std::cout << "Текущий баланс: " << счет.получитьБаланс() << " руб." << std::endl;
+                std::cout << "Current balance: " << account.getBalance() << " rub." << std::endl;
                 break;
             }
             case 0:
-                std::cout << "Выход из программы." << std::endl;
+                std::cout << "Exiting the program." << std::endl;
                 break;
             default:
-                std::cout << "Неверный выбор. Пожалуйста, попробуйте еще раз." << std::endl;
+                std::cout << "Invalid choice. Please try again." << std::endl;
         }
-    } while (выбор != 0);
+    } while (choice != 0);
 
     return 0;
 }

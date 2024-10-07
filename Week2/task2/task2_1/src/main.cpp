@@ -1,32 +1,26 @@
 #include <iostream>
+#include <ctime>
 #include "Student.hpp"
 
 int main() {
-    std::tm birthDate1 = {};
-    birthDate1.tm_year = 2002 - 1900;
-    birthDate1.tm_mon = 7;
-    birthDate1.tm_mday = 11;
+    struct tm birthDate1 = {1, 2, 3, 11, 8, 102};
+    struct tm birthDate2 = {1, 2, 3, 7, 3, 102};
 
-    Student student1("Ларионов Егор", birthDate1, "Группа 23ИБ1б", 1337, 5.0f);
+    Student student1("Egor", birthDate1, "23ib1b", 12345, 4.9);
+    
+    Student student2("Sasha", birthDate2, "23id1d", 54321, 4.7);
 
-    std::tm birthDate2 = {};
-    birthDate2.tm_year = 1999 - 1900;
-    birthDate2.tm_mon = 4;
-    birthDate2.tm_mday = 3;
-
-    Student student2("Семенов Алексей", birthDate2, "Группа 19ОД2д", 1282, 3.0f);
-
-    std::cout << "Студент 1:\n";
-    std::cout << student1.toString() << std::endl;
-    std::cout << "Возраст: " << student1.getAge() << " лет" << std::endl;
-    std::cout << "Отличник: " << (student1.isExcellentStudent() ? "Да" : "Нет") << std::endl;
+    student1.toString();
+    std::cout << "Age: " << student1.getAge() << " years" << std::endl; // Вывод возраста студента
+    std::cout << "Is student1 an excellent student? " // Проверка, является ли первый студент отличником
+              << (student1.isExcellentStudent() ? "Yes" : "No") << std::endl;
 
     std::cout << std::endl;
 
-    std::cout << "Студент 2:\n";
-    std::cout << student2.toString() << std::endl;
-    std::cout << "Возраст: " << student2.getAge() << " лет" << std::endl;
-    std::cout << "Отличник: " << (student2.isExcellentStudent() ? "Да" : "Нет") << std::endl;
+    student2.toString(); // Вывод данных студента
+    std::cout << "Age: " << student2.getAge() << " years" << std::endl; // Вывод возраста студента
+    std::cout << "Is student2 an excellent student? " // Проверка, является ли второй студент отличником
+              << (student2.isExcellentStudent() ? "Yes" : "No") << std::endl;
 
     return 0;
 }

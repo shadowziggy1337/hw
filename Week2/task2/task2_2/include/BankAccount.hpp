@@ -2,13 +2,13 @@
 
 class BankAccount {
 private:
-    std::string номерСчета;
-    double баланс;
+    std::string accountNumber;
+    double balance;
 
 public:
     BankAccount(const std::string &accNum);
     
-    void положить(double сумма);
-    void снять(double сумма);
-    double получитьБаланс() const;
+    void deposit(double amount);
+    void withdraw(double amount);
+    double getBalance() const;
 };

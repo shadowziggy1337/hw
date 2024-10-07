@@ -1,40 +1,81 @@
 #include "Student.hpp"
+#include <iostream>
+#include <ctime> 
 
-Student::Student(std::string name, std::tm birthDate, std::string group, int studentId, float averageScore)
-    : name(std::move(name)), birthDate(birthDate), group(std::move(group)), studentId(studentId), averageScore(averageScore) {}
+// Конструктор класса Student
+Student::Student(std::string name, tm birthDate, std::string group, int studentId, float averageScore)
+    : name(name), birthDate(birthDate), group(group), studentId(studentId), averageScore(averageScore) {}
 
-std::string Student::getName() { return name; }
-std::tm Student::getBirthDate() { return birthDate; }
-std::string Student::getGroup() { return group; }
-int Student::getStudentId() { return studentId; }
-float Student::getAverageScore() { return averageScore; }
+// Метод для установки имени студента
+void Student::setName(std::string name) {
+    this->name = name; // Присваиваем значение параметра полю объекта
+}
 
-void Student::setName(const std::string& newName) { name = newName; }
-void Student::setBirthDate(const std::tm& newBirthDate) { birthDate = newBirthDate; }
-void Student::setGroup(const std::string& newGroup) { group = newGroup; }
-void Student::setStudentId(int newStudentId) { studentId = newStudentId; }
-void Student::setAverageScore(float newAverageScore) { averageScore = newAverageScore; }
+// Метод для получения имени студента
+std::string Student::getName() {
+    return name; // Возвращаем значение имени
+}
 
+// Метод для установки даты рождения студента
+void Student::setBirthDate(tm birthDate) {
+    this->birthDate = birthDate; // Присваиваем значение параметра полю объекта
+}
+
+// Метод для получения даты рождения студента
+tm Student::getBirthDate() {
+    return birthDate; // Возвращаем значение даты рождения
+}
+
+// Метод для установки группы студента
+void Student::setGroup(std::string group) {
+    this->group = group; // Присваиваем значение параметра полю объекта
+}
+
+// Метод для получения группы студента
+std::string Student::getGroup() {
+    return group; // Возвращаем значение группы
+}
+
+// Метод для установки идентификатора студента
+void Student::setStudentId(int studentId) {
+    this->studentId = studentId; // Присваиваем значение параметра полю объекта
+}
+
+// Метод для получения идентификатора студента
+int Student::getStudentId() {
+    return studentId; // Возвращаем значение идентификатора
+}
+
+// Метод для установки среднего балла студента
+void Student::setAverageScore(float averageScore) {
+    this->averageScore = averageScore; // Присваиваем значение параметра полю объекта
+}
+
+// Метод для получения среднего балла студента
+float Student::getAverageScore() {
+    return averageScore; // Возвращаем значение среднего балла
+}
+
+// Метод для вычисления возраста студента
 int Student::getAge() {
-    std::time_t now = std::time(nullptr);
-    std::tm* now_tm = std::localtime(&now);
-    int age = now_tm->tm_year - birthDate.tm_year;
-    if (now_tm->tm_mon < birthDate.tm_mon || (now_tm->tm_mon == birthDate.tm_mon && now_tm->tm_mday < birthDate.tm_mday)) {
-        age--;
-    }
-    return age;
+    time_t now; // Переменная для хранения текущего времени
+    time(&now); // Получаем текущее время
+    tm* currentTime = localtime(&now); // Преобразуем в структуру tm для удобной работы с датой
+    int currentYear = currentTime->tm_year + 1900; // Получаем текущий год
+    int birthYear = birthDate.tm_year + 1900; // Получаем год рождения студента
+    return currentYear - birthYear; // Возвращаем разность, которая равна возрасту
 }
 
-std::string Student::toString() {
-    std::ostringstream oss;
-    oss << "Имя: " << name << "\n"
-        << "Дата рождения: " << std::put_time(&birthDate, "%Y-%m-%d") << "\n"
-        << "Группа: " << group << "\n"
-        << "Студенческий ID: " << studentId << "\n"
-        << "Средний балл: " << averageScore;
-    return oss.str();
-}
-
+// Метод для проверки, является ли студент отличником
 bool Student::isExcellentStudent() {
-    return averageScore = 4.8f;
+    return averageScore >= 4.8; // Возвращаем true, если средний балл равен или превышает 4.8
+}
+
+// Метод для вывода информации о студенте
+void Student::toString() {
+    std::cout << "Name: " << name << std::endl; // Вывод имени студента
+    std::cout << "Birth Date: " << asctime(&birthDate); // Вывод даты рождения в формате строки
+    std::cout << "Group: " << group << std::endl; // Вывод группы студента
+    std::cout << "Student ID: " << studentId << std::endl; // Вывод идентификатора студента
+    std::cout << "Average Score: " << averageScore << std::endl; // Вывод среднего балла
 }
