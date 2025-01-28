@@ -8,14 +8,14 @@ public:
     WorkerClient(const std::string& master_ip, int port);
     void connect_to_master();
     void start_working();
-    
+
 private:
-    std::string generate_password(int length);
-    void process_task(const std::string& task);
-    
+    int sock;
     std::string master_ip;
     int master_port;
-    int sock = 0;
+
+    std::string compute_md5(const std::string& input);
+    bool increment_password(std::string& password); // Объявление функции
 };
 
-#endif
+#endif // CLIENT_HPP

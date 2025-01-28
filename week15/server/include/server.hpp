@@ -2,28 +2,34 @@
 #define SERVER_HPP
 
 #include <string>
-#include <vector>
 #include <mutex>
-#include <netinet/in.h>
+#include <atomic>
+#include <thread>
+#include <vector>
+#include <arpa/inet.h>
+#include <openssl/evp.h>
+
+struct ClientInfo {
+    int socket;
+    int current_range; // Текущий диапазон для клиента
+};
 
 class MasterServer {
 public:
     MasterServer(int port, const std::string& target_hash);
     void run();
-    
-private:
-    void handle_client(int client_socket);
-    std::string generate_task();
     void stop_server();
 
+private:
+    void handle_client(ClientInfo client_info);
+    
     int server_fd;
-    sockaddr_in address;
+    struct sockaddr_in address;
     std::string target_hash;
-    std::mutex task_mutex;
-    bool password_found = false;
+    std::atomic<bool> password_found;
     std::string found_password;
+    std::mutex task_mutex;
+    const int max_range = 8; // Максимальный диапазон
 };
 
-std::string compute_md5(const std::string& input);
-
-#endif
+#endif // SERVER_HPP
